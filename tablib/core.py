@@ -181,7 +181,7 @@ class Dataset(object):
     def __getitem__(self, key):
         if isinstance(key, (str, unicode)):
             if key in self.headers:
-                pos = self.headers.index(key) # get 'key' index from each data
+                pos = self.headers.index(key)  # get 'key' index from each data
                 return [row[pos] for row in self._data]
             else:
                 raise KeyError
@@ -312,7 +312,6 @@ class Dataset(object):
                     except IndexError:
                         raise InvalidDatasetIndex
 
-
         if self.headers:
             if dicts:
                 data = [dict_pack(list(zip(self.headers, data_row))) for data_row in _data]
@@ -323,8 +322,6 @@ class Dataset(object):
 
         return data
 
-
-
     def _get_headers(self):
         """An *optional* list of strings to be used for header rows and attribute names.
 
@@ -332,7 +329,6 @@ class Dataset(object):
 
         """
         return self.__headers
-
 
     def _set_headers(self, collection):
         """Validating headers setter."""
@@ -346,7 +342,6 @@ class Dataset(object):
             self.__headers = None
 
     headers = property(_get_headers, _set_headers)
-
 
     def _get_dict(self):
         """A native Python representation of the :class:`Dataset` object. If headers have
@@ -665,7 +660,7 @@ class Dataset(object):
     # Rows
     # ----
 
-    def insert(self, index, row, tags=list()):
+    def insert(self, index, row, tags = list()):
         """Inserts a row to the :class:`Dataset` at the given index.
 
         Rows inserted must be the correct size (height or width).
@@ -940,6 +935,7 @@ class Dataset(object):
         new_headers = [self.headers[0]] + self[self.headers[0]]
 
         _dset.headers = new_headers
+        # enumerate 索引化
         for index, column in enumerate(self.headers):
 
             if column == self.headers[0]:
