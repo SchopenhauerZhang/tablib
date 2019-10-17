@@ -24,6 +24,7 @@ def export_stream_set(dataset, **kwargs):
     for row in dataset._package(dicts=False):
         _csv.writerow(row)
 
+    # 0开头 1 当前位置 2 结尾
     stream.seek(0)
     return stream
 
